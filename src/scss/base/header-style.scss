@@ -1,0 +1,44 @@
+@use "./variables.scss" as *;
+.header-page {
+  min-height: 545px;
+  background-image: url("../img/header-fon.jpg");
+  background-size: cover;
+  // background-color: green;
+  display: grid;
+  align-content: space-between;
+
+  .container-navigation {
+    display: flex;
+    justify-content: space-between;
+
+    .header-logo {
+      padding: 6px 19px;
+      a {
+        img {
+          width: 42px;
+          height: 40px;
+        }
+      }
+    }
+
+    .burger-menu {
+      padding: 23px 34px;
+      background: none;
+      border: none;
+    }
+  }
+  .header-menu {
+    display: none;
+  }
+  .main-text {
+    color: #ffff;
+    font-family: $roboto-light;
+    font-size: 32px;
+    padding: 0 65px 49px 33px;
+    text-transform: uppercase;
+    line-height: 50px;
+  }
+  .product-info {
+    display: none;
+  }
+}

@@ -10,7 +10,6 @@ import imagemin from "gulp-imagemin";
 import sourcemaps from "gulp-sourcemaps";
 import { deleteAsync } from "del";
 import ttf2woff from "gulp-ttf2woff";
-import ttf2woff2 from "gulp-ttf2woff2";
 import babel from "gulp-babel";
 import fileInclude from "gulp-file-include";
 import browserSyncLib from "browser-sync";
@@ -22,25 +21,25 @@ const path = {
     pages: "./dist/",
     css: "./dist/css/",
     js: "./dist/js/",
-    img: "./dist/img",
+    // img: "./dist/img",
     fonts: "./dist/fonts",
     libs: "./dist/libs/",
   },
 
   src: {
     pages: "./src/*.html",
-    css: "./src/sass/**/*.scss",
+    css: "./src/scss/**/*.scss",
     js: "./src/js/main.js",
-    img: "./src/img/**/*.{jpg,jpeg,png,gif,webp,svg}",
+    // img: "./src/img/**/*.{jpg,jpeg,png,gif,webp,svg}",
     fonts: "./src/fonts/*.{ttf,otf}",
     libs: "./src/libs/**/*.*",
   },
 
   watch: {
     pages: "./src/**/*.html",
-    css: "./src/sass/**/*.scss",
+    css: "./src/scss/**/*.scss",
     js: "./src/js/**/*.js",
-    img: "./src/img/**/*.{jpg,jpeg,png,gif,webp,svg}",
+    // img: "./src/img/**/*.{jpg,jpeg,png,gif,webp,svg}",
     fonts: "./src/fonts/*.{ttf,otf}",
     libs: "./src/libs/**/*.*",
   },
@@ -48,9 +47,14 @@ const path = {
 
 function html() {
   return gulp
-    .src(path.src.pages)
-    .pipe(fileInclude())
-    .pipe(gulp.dest(path.build.pages))
+    .src(["src/pages/*.html", "!src/pages/_*.html"])
+    .pipe(
+      fileInclude({
+        prefix: "@@",
+        basepath: "@file",
+      }),
+    )
+    .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
 }
 function style() {
@@ -92,15 +96,15 @@ function scriptsMin() {
     .pipe(rename({ suffix: ".min" }))
     .pipe(gulp.dest(path.build.js));
 }
-function images() {
-  return (
-    gulp
-      .src(path.src.img) //"src/img/**/*.{jpg,jpeg,png,gif,webp,svg}"
-      // .pipe(imagemin())
-      .pipe(gulp.dest(path.build.img))
-    // .pipe(browserSync.stream());
-  );
-}
+// function images() {
+//   return (
+//     gulp
+//       .src(path.src.img) //"src/img/**/*.{jpg,jpeg,png,gif,webp,svg}"
+//       // .pipe(imagemin())
+//       .pipe(gulp.dest(path.build.img))
+//     // .pipe(browserSync.stream());
+//   );
+// }
 function fonts() {
   return gulp
     .src(path.src.fonts)
@@ -120,7 +124,7 @@ function clean() {
 function server() {
   browserSync.init({
     server: {
-      baseDir: "./dist/",
+      baseDir: ["./dist", "./src"],
     },
     notify: false,
     port: 3000,
@@ -134,34 +138,35 @@ export function ttfToWoff() {
     .pipe(gulp.dest(path.build.fonts))
     .pipe(browserSync.stream());
 }
-export function ttfToWoff2() {
-  return gulp
-    .src(path.src.fonts)
-    .pipe(ttf2woff2())
-    .pipe(gulp.dest(path.build.fonts))
-    .pipe(browserSync.stream());
-}
+// export function ttfToWoff2() {
+//   return gulp
+//     .src(path.src.fonts)
+//     .pipe(ttf2woff2())
+//     .pipe(gulp.dest(path.build.fonts))
+//     .pipe(browserSync.stream());
+// }
 export function watchFiles() {
   gulp.watch(path.watch.pages, html);
   gulp.watch(path.watch.css, style);
   gulp.watch(path.watch.js, scripts);
   gulp.watch(path.watch.fonts, fonts);
-  gulp.watch(path.watch.img, images);
+  // gulp.watch(path.watch.img, images);
   gulp.watch(path.watch.libs, libs);
 }
 
-const fontTask = gulp.series(ttfToWoff, ttfToWoff2);
+const fontTask = gulp.series(ttfToWoff);
 
 const dev = gulp.series(
   clean,
-  gulp.parallel(html, fonts, style, images, scripts, libs),
+  gulp.parallel(html, style, scripts, libs),
+  fontTask,
   gulp.parallel(watchFiles, server),
 );
 const build = gulp.series(
   clean,
-  gulp.parallel(html, images, libs, style, scripts),
-  gulp.parallel(scriptsMin, styleMin, server),
+  gulp.parallel(html, libs, style, scripts),
   fontTask,
+  gulp.parallel(scriptsMin, styleMin, server),
 );
 
 export default dev;

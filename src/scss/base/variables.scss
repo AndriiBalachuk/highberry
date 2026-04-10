@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Roboto-light";
+  src: url(../fonts/Roboto-Light.woff);
+}
+@font-face {
+  font-family: "Roboto-regular";
+  src: url(../fonts/Roboto-Regular.woff);
+}
+@font-face {
+  font-family: "Roboto-bold";
+  src: url(../fonts/Roboto-Bold.woff);
+}
+@font-face {
+  font-family: "Mulish-semiBold";
+  src: url(../fonts/Mulish-SemiBold.woff);
+}
+@font-face {
+  font-family: "Mulish-reqular";
+  src: url(../fonts/Mulish-Regular.woff);
+}
+$roboto-light: "Roboto-light", sans-serif;
+$roboto-reqular: "Roboto-regular", sans-serif;
+$roboto-bold: "Roboto-bold", sans-serif;
+$mulish-semiBold: "Mulish-semiBold", sans-serif;
+$mulish-regular: "Mulish-reqular", sans-serif;
+$grey-dark: #1a171b;
+$grey: #666769;
+$grey-light: #dddedf;
+$grey-bright: #edecec;
+$green-light: #6ab354;
+$green-dark: #3a7611;
+$green: #74b746;
+$white: #f8f8f8;
+$border-color: #e3ded9;

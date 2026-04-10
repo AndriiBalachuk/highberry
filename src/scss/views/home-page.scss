@@ -1,0 +1,397 @@
+@use "../base/variables.scss" as *;
+@use "../base/header-style.scss" as *;
+@use "../base/footer-style.scss" as *;
+//base
+.more-information {
+  font-family: $mulish-semiBold;
+  font-size: 10px;
+  color: $green;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+}
+.more-information::after {
+  content: "";
+  width: 17px;
+  height: 10px;
+  margin-left: 6px;
+  top: 2px;
+  background-image: url(../img/arrow-icon.svg);
+  background-repeat: no-repeat;
+  position: absolute;
+  color: $green;
+}
+
+.text-descriprion {
+  padding: 0 21px;
+  p {
+    font-family: $roboto-light;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: justify;
+  }
+  p:first-child {
+    margin-bottom: 16px;
+  }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.transportation-map {
+  margin: 35px 0 34px 0;
+
+  .world-map {
+    margin-top: 34px;
+    padding: 0 21px;
+    .map {
+      display: block;
+      width: 100%;
+      margin-bottom: 34px;
+    }
+    .map-description {
+      font-family: $roboto-light;
+      font-size: 10px;
+      color: #000;
+      line-height: 16px;
+      text-align: justify;
+    }
+    .more-information {
+      padding-left: 3px;
+    }
+  }
+}
+.plant {
+  margin: 37px 0 35px 0;
+  .plant-image-container {
+    margin: 39px 0 30px 0;
+    padding: 0 21px;
+    .fruits-list,
+    .vegetables-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .icon-button {
+        display: flex;
+        flex-shrink: 1;
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .fruits-list {
+      margin-bottom: 17px;
+    }
+    .vegetables-list {
+      margin-top: 18px;
+    }
+    .plant-area {
+      display: flex;
+      justify-self: center;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 11px;
+      min-height: 46px;
+      min-width: 129px;
+      font-family: $roboto-reqular;
+      font-size: 10px;
+      color: $grey-dark;
+      border: 1px solid $border-color;
+      border-radius: 10px;
+      p {
+        line-height: 12px;
+      }
+
+      p:first-child {
+        text-transform: uppercase;
+      }
+      p:last-child {
+        position: relative;
+      }
+      p:last-child::before {
+        content: "";
+        border-left: 1px solid #20912a;
+        height: 23px;
+
+        top: -5px;
+        left: -15px;
+        position: absolute;
+      }
+    }
+    .plant-area:last-child {
+      padding: 10px 11px 13px 11px;
+    }
+    .field-area-image {
+      margin: 13px 0;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+}
+.transportation-map,
+.plant,
+.manufacture {
+  .top-text {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $roboto-reqular;
+    font-size: 24px;
+    line-height: 28px;
+    color: $green-light;
+  }
+  .icon-container {
+    margin-top: 25px;
+    padding: 0 21px;
+    .item-container {
+      display: flex;
+      // flex-direction: row;
+      align-items: center;
+      min-height: 115px;
+      gap: 27px;
+      border: 1px solid $border-color;
+      border-radius: 10px;
+      .icon {
+        padding: 0 0 0 14px;
+      }
+      p {
+        color: #1a171b;
+        font-family: $roboto-reqular; //Тут не той шрифт У фігмі текст зроблений як svg тому не можна глянути
+        font-weight: 600; // якась дічь з pixel perfect тупо неможливо налаштувати розташування шрифту так як на макеті
+        font-size: 24px;
+        line-height: 24px;
+        span:first-child {
+          font-family: $roboto-reqular;
+          font-size: 16px;
+          font-weight: 400;
+          display: inline-block;
+          margin-left: 6px;
+        }
+        span:last-child {
+          display: flex;
+          flex-wrap: wrap;
+          font-family: $roboto-reqular;
+          text-transform: uppercase;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+    .item-container:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.fresh,
+.technological-processes {
+  .accordeon-picture {
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .accordeon-container {
+    background-color: $grey-bright;
+    padding: 23px 0 30px 0;
+    h2 {
+      font-family: $roboto-reqular;
+      font-size: 24px;
+      color: $green-light;
+      margin-bottom: 13px;
+      line-height: 0.8;
+      padding: 0 22px;
+      text-transform: uppercase;
+    }
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 21px 0 52px;
+    }
+    .product-item {
+      font-family: $roboto-light;
+
+      font-size: 20px;
+      position: relative;
+
+      button {
+        text-transform: uppercase;
+
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font: inherit;
+        position: relative;
+      }
+      .product-info {
+        font-family: $roboto-light;
+        font-size: 10px;
+        color: #000;
+        line-height: 16px;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.4s ease;
+        pointer-events: none;
+        a {
+          pointer-events: none;
+        }
+      }
+      .product-info.active {
+        max-height: 100px;
+
+        pointer-events: auto;
+        a {
+          pointer-events: auto;
+        }
+      }
+    }
+    .product-item::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 1px solid $green;
+      border-radius: 50%;
+      left: -28px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.berries-fruits {
+  margin-bottom: 40px;
+
+  .slider-image {
+    display: flex;
+    height: 263px;
+
+    .swiper-wrapper {
+      height: 100%;
+    }
+
+    .swiper-slide {
+      height: 100%;
+      display: flex;
+      align-items: end;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slider-description {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 10px 66px;
+      position: relative;
+      z-index: 1;
+
+      p {
+        font-family: $roboto-light;
+        font-size: 24px;
+        color: #ffffff;
+      }
+    }
+
+    .slider-description::after {
+      content: "";
+      background-color: $grey-dark;
+      opacity: 0.71;
+      inset: 0;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+  .berries-fruits-frozen {
+    background-color: $grey-bright;
+    padding: 11px 20px 23px 20px;
+    .swiper-pagination {
+      position: static;
+      margin-bottom: 19px;
+    }
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      border: 1px solid $green;
+      border-radius: 50%;
+      background-color: transparent;
+      transition: all 0.3s linear;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $green;
+    }
+    h2 {
+      font-family: $roboto-reqular;
+      font-size: 24px;
+      color: $green-light;
+      text-transform: uppercase;
+    }
+    p {
+      font-family: $roboto-light;
+      font-size: 16px;
+      line-height: 25px;
+    }
+  }
+}
+.manufacture {
+  padding: 0 21px;
+  margin-bottom: 36px;
+  .manufacture-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 18px 13px 22px 14px;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    h2 {
+      text-align: center;
+      font-family: $roboto-reqular;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: $green-light;
+      margin-bottom: 23px;
+    }
+    .manufacture-image {
+      align-self: center;
+      margin-bottom: 19px;
+      img {
+        display: block;
+      }
+    }
+    .text-descriprion {
+      padding: 0;
+    }
+  }
+  .icon-container {
+    margin-top: 51px;
+    padding: 0;
+  }
+}
+
+.technological-processes {
+  h2 {
+    text-align: center;
+    padding: 0 75px;
+    margin-bottom: 19px;
+    font-family: $roboto-reqular;
+    font-size: 24px;
+    color: $green-light;
+    text-transform: uppercase;
+  }
+}
+
+.section-video {
+  margin: 40px 0 41px 0;
+  iframe {
+    display: block;
+    min-height: 174px;
+    min-width: 320px;
+  }
+}
